@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+        <section>
+            <h2>¿Qué es el IMC?</h2>
+            <p>El Índice de Masa Corporal (IMC) es una medida que se utiliza para evaluar si una persona tiene un peso saludable en relación con su altura.</p>
+            <h2>¿Cómo se halla el IMC?</h2>
+            <p>El IMC se calcula dividiendo el peso de una persona en kilogramos por el cuadrado de su altura en metros.</p>
+        </section>
+        <aside>
+            <form action="/calculadora" method="post">
+                <label for="altura">Altura (m):</label>
+                <input type="number" id="altura" name="altura" step="0.01" required>
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" name="peso" step="0.1" required>
+                <button type="submit">Calcular IMC</button>
+            </form>
+        </aside>
+    </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const altura = document.getElementById('altura').value;
+            const peso = document.getElementById('peso').value;
+
+            if (altura <= 0 || peso <= 0) {
+                alert('Por favor, ingrese valores válidos para la altura y el peso.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

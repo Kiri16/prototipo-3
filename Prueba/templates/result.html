@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado IMC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado IMC</h1>
+        <p>Tu IMC es: {{ imc|round(2) }}</p>
+        <img src="{{ url_for('static', filename='images/' ~ img) }}" alt="IMC Image">
+        <p>{{ diagnostico }}</p>
+        
+        <div class="options">
+            <h2>Opciones:</h2>
+            <ul>
+                <li><a href="#que-significa">¿Qué significa este resultado?</a></li>
+                <li><a href="#como-mejorar">¿Cómo puedo mejorar mi salud?</a></li>
+            </ul>
+        </div>
+        
+        <div id="que-significa" class="section">
+            <h2>¿Qué significa este resultado?</h2>
+            <p>{{ explicacion }}</p>
+        </div>
+        
+        <div id="como-mejorar" class="section">
+            <h2>¿Cómo puedo mejorar mi salud?</h2>
+            <p>{{ aviso }}</p>
+        </div>
+        
+        <a href="{{ url_for('diagnostico_page', diagnostico=diagnostico) }}" class="button">Ver diagnóstico</a>
+    </div>
+</body>
+</html>
